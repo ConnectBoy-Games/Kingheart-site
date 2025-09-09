@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINGHEART ROYAL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Equivalent to slate-50 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem; /* Equivalent to p-4 */
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 1rem; /* Equivalent to rounded-xl */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Equivalent to shadow-2xl */
+            width: 100%;
+            max-width: 48rem; /* Equivalent to max-w-2xl */
+            overflow: hidden;
+        }
+        .header {
+            background-color: #047857; /* Equivalent to emerald-700 */
+            padding: 3rem; /* Equivalent to p-12 */
+            color: #ffffff;
+            text-align: center;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 25%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            font-size: 2.25rem; /* Equivalent to text-4xl */
+            font-weight: 800; /* Equivalent to font-extrabold */
+        }
+        .header p {
+            color: #a7f3d0; /* Equivalent to emerald-200 */
+            margin-top: 0.5rem; /* Equivalent to mt-2 */
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb; /* Equivalent to border-b border-gray-200 */
+        }
+        .tab-button {
+            flex-grow: 1;
+            padding: 1rem 0; /* Equivalent to py-4 */
+            text-align: center;
+            font-weight: 700; /* Equivalent to font-bold */
+            color: #4b5563; /* Equivalent to text-gray-700 */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            outline: none;
+        }
+        .tab-button:hover {
+            background-color: #f3f4f6; /* Equivalent to hover:bg-gray-100 */
+        }
+        .tab-button.active {
+            color: #059669; /* Equivalent to text-emerald-600 */
+            position: relative;
+        }
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -1px;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background-color: #059669;
+        }
+        .tab-content {
+            padding: 2rem; /* Equivalent to p-8 */
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+        .tab-content h2 {
+            font-size: 1.5rem; /* Equivalent to text-2xl */
+            font-weight: 600; /* Equivalent to font-semibold */
+            color: #1f2937; /* Equivalent to text-gray-800 */
+            margin-bottom: 1rem; /* Equivalent to mb-4 */
+        }
+        .tab-content p {
+            color: #4b5563; /* Equivalent to text-gray-600 */
+            line-height: 1.625; /* Equivalent to leading-relaxed */
+        }
+        .tab-content ul {
+            list-style-type: disc;
+            list-style-position: inside;
+            color: #4b5563; /* Equivalent to text-gray-600 */
+            padding-left: 0;
+            margin-top: 0.5rem;
+        }
+        .tab-content ul li {
+            margin-bottom: 0.5rem;
+        }
+        .tab-content a {
+            color: #059669; /* Equivalent to text-emerald-600 */
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .tab-content a:hover {
+            text-decoration: underline;
+        }
+        /* Account Deletion Styles */
+        .account-deletion form {
+          margin-top: 20px;
+        }
+        .account-deletion label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+          color: #333;
+        }
+        .account-deletion input {
+          width: 95%;
+          padding: 10px;
+          margin-bottom: 15px;
+          border: 1px solid #3d5afe;
+          border-radius: 5px;
+          font-size: 16px;
+          color: #222;
+        }
+        .account-deletion button {
+          background-color: #ff4081;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
+        }
+        .account-deletion button:hover {
+          background-color: #f50057;
+        }
+        .error {
+          color: #ff4081;
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+
+        /* Pop-up Styles */
+        .popup-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          display: none;
+          justify-content: center;
+          align-items: center;
+          z-index: 2000;
+        }
+        .popup {
+          background-color: #2a2a2a;
+          padding: 20px;
+          border-radius: 10px;
+          text-align: center;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+          width: 300px;
+        }
+        .popup h3 {
+          margin-bottom: 20px;
+          color: #ff4081;
+        }
+        .popup button {
+          margin: 10px;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
+        }
+        .popup .confirm {
+          background-color: #ff4081;
+          color: white;
+        }
+        .popup .cancel {
+          background-color: #3d5afe;
+          color: white;
+        }
+        .popup .confirm:hover {
+          background-color: #f50057;
+        }
+        .popup .cancel:hover {
+          background-color: #304ffe;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header Section -->
+        <header class="header">
+            <img src="Logo.png" alt="Profile Logo" class="logo">
+            <h1>KINGHEART ROYAL SOLUTIONS</h1>
+            <p>chesswagercnb@gmail.com</p>
+        </header>
+
+        <!-- Tab Buttons -->
+        <div class="tabs">
+            <button id="about-tab" class="tab-button" onclick="showTab('about')">Privacy Policy</button>
+            <button id="projects-tab" class="tab-button" onclick="showTab('projects')">Terms Of Service</button>
+            <button id="contact-tab" class="tab-button" onclick="showTab('contact')">Account Deletion</button>
+        </div>
+
+        <!-- Tab Content -->
+        <main>
+            <div id="about-content" class="tab-content">
+                <h2>Privacy Policy</h2>
+              <p><strong>Effective Date:</strong> 2024/12/08</p>
+              <p>
+                Welcome to KINGHEART ROYAL SOLUTIONS. Your privacy is our top priority. This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our game, whether on Android, iOS, or other platforms. By creating an account and accessing our services, you agree to the terms of this Privacy Policy.
+              </p>
+            
+              <h3>1. Information We Collect</h3>
+              <p>We collect information to provide a seamless gaming experience and improve our services. This includes:</p>
+              <ul>
+                <li>
+                  <strong>Account Information:</strong> When you create an account, we collect information such as your username, email address, and password. Optional profile details like profile pictures and display names may also be collected.
+                </li>
+                <li>
+                  <strong>Game Data:</strong> We collect in-game statistics, progress, and preferences, such as scores, achievements, and offline gameplay history.
+                </li>
+                <li>
+                  <strong>Device Information:</strong> Details about your device, such as model, operating system, IP address, and unique device identifiers (e.g., Android ID or iOS IDFA).
+                </li>
+                <li>
+                  <strong>Usage Data:</strong> Information on how you interact with the game, such as session duration, clicks, and feature usage.
+                </li>
+                <li>
+                  <strong>Log Data:</strong> Technical logs that may include crash reports, performance data, and error diagnostics to help us improve our app's stability.
+                </li>
+              </ul>
+            
+              <h3>2. How We Use Your Information</h3>
+              <p>Your information is used to:</p>
+              <ul>
+                <li>Provide, personalize, and improve your gaming experience.</li>
+                <li>Facilitate account management, such as login authentication and password recovery.</li>
+                <li>Analyze usage patterns to enhance game performance and identify areas for improvement.</li>
+                <li>Comply with legal requirements and prevent fraudulent or unauthorized activities.</li>
+              </ul>
+            
+              <h3>3. Sharing Your Information</h3>
+              <p>We only share your information in the following cases:</p>
+              <ul>
+                <li>
+                  <strong>Service Providers:</strong> We partner with trusted third-party vendors for hosting, analytics, and technical support, sharing only the data required to perform these services.
+                </li>
+                <li>
+                  <strong>Legal Compliance:</strong> If required by law or necessary to protect our rights, we may disclose information to authorities or third parties.
+                </li>
+                
+              </ul>
+            
+              <h3>4. Data Security</h3>
+              <p>
+                We implement industry-standard security measures to protect your data from unauthorized access, disclosure, alteration, and destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+              </p>
+            
+              <h3>5. Your Rights and Choices</h3>
+              <p>You have the right to:</p>
+              <ul>
+                <li>Access, correct, or delete your personal information.</li>
+                <li>Object to or restrict certain processing of your data.</li>
+                <li>Request a copy of your data in a portable format.</li>
+              </ul>
+              <p>To exercise these rights, please contact us using the information provided in the "Contact Us" section.</p>
+            
+              <h3>6. Children's Privacy</h3>
+              <p>
+                Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe we may have collected information about a child, please contact us immediately.
+              </p>
+            
+              <h3>7. Changes to This Privacy Policy</h3>
+              <p>
+                We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Effective Date" at the top. You are advised to review this Privacy Policy periodically for any changes.
+              </p>
+            
+              <h3>8. Contact Us</h3>
+              <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+              <p>Email: chesswagercnb@gmail.com</p>
+            </div>
+
+            <div id="projects-content" class="tab-content">
+                <h2>Terms Of Service</h2>
+                  <p><strong>Effective Date:</strong> 2024/12/08</p>
+                  <p>
+                    Welcome to KINGHEART ROYAL SOLUTIONS. By creating an account, accessing, or using our services, you agree to comply with these Terms of Service. Please read them carefully. If you do not agree to these terms, you may not use our services.
+                  </p>
+                
+                  <h3>1. Introduction</h3>
+                  <p>
+                    KINGHEART ROYAL SOLUTIONS ("the Game") is an online chess application available on Android and iOS platforms. It offers offline gameplay and other features to enhance your gaming experience. These Terms of Service govern your use of the Game and any related services ("the Services").
+                  </p>
+                
+                  <h3>2. Eligibility</h3>
+                  <p>
+                    You must be at least 13 years old (or the minimum age in your jurisdiction) to use the Services. If you are under 18, you must have parental or guardian consent to use the Services.
+                  </p>
+                
+                  <h3>3. Account Registration and Security</h3>
+                  <p>
+                    To access certain features of the Services, you may be required to create an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.
+                  </p>
+                
+                  <h3>4. User Conduct</h3>
+                  <p>You agree not to:</p>
+                  <ul>
+                    <li>Use the Services for any unlawful purpose or in violation of these Terms.</li>
+                    <li>Harass, abuse, or harm another person through the Services.</li>
+                    <li>Impersonate or misrepresent your affiliation with any person or entity.</li>
+                    <li>Interfere with or disrupt the Services or servers or networks connected to the Services.</li>
+                    <li>Attempt to gain unauthorized access to any portion of the Services or any other systems or networks connected to the Services.</li>
+                  </ul>
+                
+                  <h3>5. Intellectual Property Rights</h3>
+                  <p>
+                    The Services and its original content, features, and functionality are owned by KINGHEART ROYAL SOLUTIONS and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
+                  </p>
+                
+                  <h3>6. User-Generated Content</h3>
+                  <p>
+                    You retain ownership of any content you submit, post, or display on or through the Services. By submitting, posting, or displaying content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, and display such content.
+                  </p>
+                
+                  <h3>7. Termination</h3>
+                  <p>
+                    We may terminate or suspend your account and bar access to the Services immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of the Terms.
+                  </p>
+                
+                  <h3>8. Limitation of Liability</h3>
+                  <p>
+                    In no event shall KINGHEART ROYAL SOLUTIONS, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Services.
+                  </p>
+                
+                  <h3>9. Governing Law</h3>
+                  <p>
+                    These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which KINGHEART ROYAL SOLUTIONS is headquartered, without regard to its conflict of law provisions.
+                  </p>
+                
+                  <h3>10. Changes to Terms</h3>
+                  <p>
+                    We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+                  </p>
+                
+                  <h3>11. Contact Us</h3>
+                  <p>
+                    If you have any questions about these Terms, please contact us at:
+                  </p>
+                  <p>Email: chesswagercnb@gmail.com</p>
+            </div>
+
+            <div id="contact-content" class="tab-content">
+                <div class="account-deletion">
+                    <h2>Account Deletion</h2>
+                    <p>Deleting your account is irreversible. Please confirm your email and password to proceed.</p>
+                    <form id="deletionForm">
+                      <label for="email">Email Address</label>
+                      <input type="email" id="email" placeholder="Enter your email">
+                      
+                      <label for="password">Password</label>
+                      <input type="password" id="password" placeholder="Enter your password">
+                      
+                      <p id="errorMessage" class="error" style="display: none;">Please fill in all fields.</p>
+                      
+                      <button type="button" onclick="showPopup()">Delete My Account</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+          <!-- Pop-up -->
+          <div class="popup-overlay" id="popupOverlay">
+            <div class="popup">
+              <h3 id="popupMessage"></h3>
+              <button class="confirm" onclick="deleteAccount()">Confirm</button>
+              <button class="cancel" onclick="closePopup()">Cancel</button>
+            </div>
+          </div>
+    </div>
+
+    <script>
+        function showTab(tabId) 
+        {
+            // Get all tab buttons and content sections
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // Deactivate all buttons and content
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Activate the clicked button and corresponding content
+            const clickedButton = document.getElementById(`${tabId}-tab`);
+            const targetContent = document.getElementById(`${tabId}-content`);
+
+            if (clickedButton && targetContent) {
+                // Apply active styling
+                clickedButton.classList.add('active');
+                targetContent.classList.add('active');
+            }
+        }
+
+        function showPopup() 
+        {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (!email || !password) 
+            {
+                errorMessage.style.display = 'block';
+                return;
+            }
+            errorMessage.style.display = 'none';
+        }
+
+        function closePopup() 
+        {
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+
+        // Initialize the first tab as active on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('about');
+        });
+    </script>
+</body>
+</html>
