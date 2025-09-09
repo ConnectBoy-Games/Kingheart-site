@@ -1,454 +1,626 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KINGHEART ROYAL</title>
+    <title>Kingheart Solutions - Digital & Tech Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-
+        /* General Styles */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9; /* Equivalent to slate-50 */
+            background-color: #f9fafb;
+            color: #4b5563;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 0.75rem 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+            color: #2563eb;
+            margin-right: 0.5rem;
+        }
+        .logo-text {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #111827;
+        }
+        .nav-links {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-links li {
+            margin-left: 1rem;
+        }
+        .nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            text-decoration: none;
+            color: #4b5563;
+        }
+        .nav-link:hover {
+            background-color: #f3f4f6;
+        }
+        .nav-link.active {
+            color: #ffffff;
+            background-color: #2563eb;
+        }
+
+        .mobile-menu-button {
+            display: block;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        .mobile-menu {
+            display: none;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 0.5rem 0;
+        }
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 0.5rem;
+        }
+        .mobile-nav-link {
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #4b5563;
+        }
+        .mobile-nav-link:hover {
+            background-color: #f3f4f6;
+        }
+        
+        /* Main Content Sections */
+        main {
+            padding-top: 5rem;
+        }
+        .section {
+            padding: 5rem 0;
+        }
+        .section-header {
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #111827;
+        }
+
+        /* Home Section */
+        #home {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            padding: 1rem; /* Equivalent to p-4 */
-            margin: 0;
+            text-align: center;
+            background-color: #f3f4f6;
         }
-        .container {
-            background-color: #ffffff;
-            border-radius: 1rem; /* Equivalent to rounded-xl */
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Equivalent to shadow-2xl */
-            width: 100%;
-            max-width: 48rem; /* Equivalent to max-w-2xl */
-            overflow: hidden;
+        .hero-content {
+            max-width: 48rem;
+            margin: 0 auto;
         }
-        .header {
-            background-color: #047857; /* Equivalent to emerald-700 */
-            padding: 3rem; /* Equivalent to p-12 */
+        .hero-heading {
+            font-size: 3rem;
+            line-height: 1.25;
+            font-weight: 800;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+        .hero-heading .highlight {
+            color: #2563eb;
+        }
+        .hero-subheading {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+        .contact-button {
+            display: inline-block;
+            background-color: #2563eb;
             color: #ffffff;
-            text-align: center;
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-        }
-        .logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 25%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .header h1 {
-            font-size: 2.25rem; /* Equivalent to text-4xl */
-            font-weight: 800; /* Equivalent to font-extrabold */
-        }
-        .header p {
-            color: #a7f3d0; /* Equivalent to emerald-200 */
-            margin-top: 0.5rem; /* Equivalent to mt-2 */
-        }
-        .tabs {
-            display: flex;
-            border-bottom: 1px solid #e5e7eb; /* Equivalent to border-b border-gray-200 */
-        }
-        .tab-button {
-            flex-grow: 1;
-            padding: 1rem 0; /* Equivalent to py-4 */
-            text-align: center;
-            font-weight: 700; /* Equivalent to font-bold */
-            color: #4b5563; /* Equivalent to text-gray-700 */
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-            outline: none;
-        }
-        .tab-button:hover {
-            background-color: #f3f4f6; /* Equivalent to hover:bg-gray-100 */
-        }
-        .tab-button.active {
-            color: #059669; /* Equivalent to text-emerald-600 */
-            position: relative;
-        }
-        .tab-button.active::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -1px;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 2px;
-            background-color: #059669;
-        }
-        .tab-content {
-            padding: 2rem; /* Equivalent to p-8 */
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .tab-content.active {
-            display: block;
-            opacity: 1;
-        }
-        .tab-content h2 {
-            font-size: 1.5rem; /* Equivalent to text-2xl */
-            font-weight: 600; /* Equivalent to font-semibold */
-            color: #1f2937; /* Equivalent to text-gray-800 */
-            margin-bottom: 1rem; /* Equivalent to mb-4 */
-        }
-        .tab-content p {
-            color: #4b5563; /* Equivalent to text-gray-600 */
-            line-height: 1.625; /* Equivalent to leading-relaxed */
-        }
-        .tab-content ul {
-            list-style-type: disc;
-            list-style-position: inside;
-            color: #4b5563; /* Equivalent to text-gray-600 */
-            padding-left: 0;
-            margin-top: 0.5rem;
-        }
-        .tab-content ul li {
-            margin-bottom: 0.5rem;
-        }
-        .tab-content a {
-            color: #059669; /* Equivalent to text-emerald-600 */
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s;
             text-decoration: none;
-            transition: color 0.2s;
         }
-        .tab-content a:hover {
-            text-decoration: underline;
-        }
-        /* Account Deletion Styles */
-        .account-deletion form {
-          margin-top: 20px;
-        }
-        .account-deletion label {
-          display: block;
-          margin-bottom: 5px;
-          font-weight: bold;
-          color: #333;
-        }
-        .account-deletion input {
-          width: 95%;
-          padding: 10px;
-          margin-bottom: 15px;
-          border: 1px solid #3d5afe;
-          border-radius: 5px;
-          font-size: 16px;
-          color: #222;
-        }
-        .account-deletion button {
-          background-color: #ff4081;
-          color: #fff;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 5px;
-          cursor: pointer;
-          font-weight: bold;
-          transition: background-color 0.3s ease;
-        }
-        .account-deletion button:hover {
-          background-color: #f50057;
-        }
-        .error {
-          color: #ff4081;
-          font-size: 14px;
-          margin-bottom: 10px;
+        .contact-button:hover {
+            background-color: #1d4ed8;
         }
 
-        /* Pop-up Styles */
-        .popup-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.8);
-          display: none;
-          justify-content: center;
-          align-items: center;
-          z-index: 2000;
+        /* About Section */
+        .about-content {
+            max-width: 48rem;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            color: #4b5563;
+            text-align: justify;
         }
-        .popup {
-          background-color: #2a2a2a;
-          padding: 20px;
-          border-radius: 10px;
-          text-align: center;
-          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-          width: 300px;
+        .about-content p {
+            margin-bottom: 1.5rem;
         }
-        .popup h3 {
-          margin-bottom: 20px;
-          color: #ff4081;
+
+        /* News Section */
+        #news {
+            background-color: #f3f4f6;
+            border-radius: 1rem;
+            padding: 2%;
         }
-        .popup button {
-          margin: 10px;
-          padding: 10px 15px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-          font-weight: bold;
-          transition: background-color 0.3s ease;
+        .news-grid {
+            display: grid;
+            gap: 2rem;
         }
-        .popup .confirm {
-          background-color: #ff4081;
-          color: white;
+        .news-card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: transform 0.3s;
         }
-        .popup .cancel {
-          background-color: #3d5afe;
-          color: white;
+        .news-card:hover {
+            transform: scale(1.02);
         }
-        .popup .confirm:hover {
-          background-color: #f50057;
+        .news-image {
+            width: 100%;
+            height: 12rem;
+            object-fit: cover;
         }
-        .popup .cancel:hover {
-          background-color: #304ffe;
+        .news-content {
+            padding: 1.5rem;
+        }
+        .news-date {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111827;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .news-text {
+            color: #4b5563;
+            font-size: 0.875rem;
+        }
+
+        /* Policy Section */
+        .policy-content {
+            max-width: 48rem;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            color: #4b5563;
+            text-align: justify;
+        }
+        .policy-content h3 {
+            font-weight: 600;
+            color: #111827;
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #f3f4f6;
+            border-radius: 1rem;
+            padding: 2%;
+        }
+        .contact-grid {
+            display: grid;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+        .contact-form-card, .contact-info-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            justify-content: center;
+        }
+        .contact-form-heading {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        .form-group input, .form-group textarea {
+            margin-top: 0.25rem;
+            display: block;
+            width: 95%;
+            border-radius: 0.375rem;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            padding: 0.5rem 0.75rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+        #form-message {
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: none;
+        }
+        .contact-submit-button {
+            width: 100%;
+            background-color: #2563eb;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .contact-submit-button:hover {
+            background-color: #1d4ed8;
+        }
+        .contact-info-card a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .contact-info-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1f2937;
+            color: #ffffff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive Media Queries */
+        @media (min-width: 768px) {
+            .mobile-menu-button {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
+            }
+            .news-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .contact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1024px) {
+            .news-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            .nav-links li {
+                margin-left: 1rem;
+            }
+            .nav-link {
+                padding: 0.5rem 1rem;
+            }
         }
     </style>
 </head>
-<body>
+<body class="relative">
 
-    <div class="container">
-        
-        <!-- Header Section -->
-        <header class="header">
-            <img src="Logo.png" alt="Profile Logo" class="logo">
-            <h1>KINGHEART ROYAL SOLUTIONS</h1>
-            <p>chesswagercnb@gmail.com</p>
-        </header>
-
-        <!-- Tab Buttons -->
-        <div class="tabs">
-            <button id="about-tab" class="tab-button" onclick="showTab('about')">Privacy Policy</button>
-            <button id="projects-tab" class="tab-button" onclick="showTab('projects')">Terms Of Service</button>
-            <button id="contact-tab" class="tab-button" onclick="showTab('contact')">Account Deletion</button>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="container nav-container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="Logo.png" alt="Profile Logo" class="logo">
+            </div>
+            <p class="logo-text">Kingheart Royal Solutions</p>
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#news" class="nav-link">News</a></li>
+                <li><a href="#policy" class="nav-link">Policy</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="mobile-menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu">
+            <ul>
+                <li><a href="#home" class="mobile-nav-link">Home</a></li>
+                <li><a href="#about" class="mobile-nav-link">About</a></li>
+                <li><a href="#news" class="mobile-nav-link">News</a></li>
+                <li><a href="#policy" class="mobile-nav-link">Policy</a></li>
+                <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
         </div>
+    </header>
 
-        <!-- Tab Content -->
-        <main>
-            <div id="about-content" class="tab-content">
-                <h2>Privacy Policy</h2>
-              <p><strong>Effective Date:</strong> 2024/12/08</p>
-              <p>
-                Welcome to KINGHEART ROYAL SOLUTIONS. Your privacy is our top priority. This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our game, whether on Android, iOS, or other platforms. By creating an account and accessing our services, you agree to the terms of this Privacy Policy.
-              </p>
-            
-              <h3>1. Information We Collect</h3>
-              <p>We collect information to provide a seamless gaming experience and improve our services. This includes:</p>
-              <ul>
-                <li>
-                  <strong>Account Information:</strong> When you create an account, we collect information such as your username, email address, and password. Optional profile details like profile pictures and display names may also be collected.
-                </li>
-                <li>
-                  <strong>Game Data:</strong> We collect in-game statistics, progress, and preferences, such as scores, achievements, and offline gameplay history.
-                </li>
-                <li>
-                  <strong>Device Information:</strong> Details about your device, such as model, operating system, IP address, and unique device identifiers (e.g., Android ID or iOS IDFA).
-                </li>
-                <li>
-                  <strong>Usage Data:</strong> Information on how you interact with the game, such as session duration, clicks, and feature usage.
-                </li>
-                <li>
-                  <strong>Log Data:</strong> Technical logs that may include crash reports, performance data, and error diagnostics to help us improve our app's stability.
-                </li>
-              </ul>
-            
-              <h3>2. How We Use Your Information</h3>
-              <p>Your information is used to:</p>
-              <ul>
-                <li>Provide, personalize, and improve your gaming experience.</li>
-                <li>Facilitate account management, such as login authentication and password recovery.</li>
-                <li>Analyze usage patterns to enhance game performance and identify areas for improvement.</li>
-                <li>Comply with legal requirements and prevent fraudulent or unauthorized activities.</li>
-              </ul>
-            
-              <h3>3. Sharing Your Information</h3>
-              <p>We only share your information in the following cases:</p>
-              <ul>
-                <li>
-                  <strong>Service Providers:</strong> We partner with trusted third-party vendors for hosting, analytics, and technical support, sharing only the data required to perform these services.
-                </li>
-                <li>
-                  <strong>Legal Compliance:</strong> If required by law or necessary to protect our rights, we may disclose information to authorities or third parties.
-                </li>
-                
-              </ul>
-            
-              <h3>4. Data Security</h3>
-              <p>
-                We implement industry-standard security measures to protect your data from unauthorized access, disclosure, alteration, and destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
-              </p>
-            
-              <h3>5. Your Rights and Choices</h3>
-              <p>You have the right to:</p>
-              <ul>
-                <li>Access, correct, or delete your personal information.</li>
-                <li>Object to or restrict certain processing of your data.</li>
-                <li>Request a copy of your data in a portable format.</li>
-              </ul>
-              <p>To exercise these rights, please contact us using the information provided in the "Contact Us" section.</p>
-            
-              <h3>6. Children's Privacy</h3>
-              <p>
-                Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe we may have collected information about a child, please contact us immediately.
-              </p>
-            
-              <h3>7. Changes to This Privacy Policy</h3>
-              <p>
-                We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Effective Date" at the top. You are advised to review this Privacy Policy periodically for any changes.
-              </p>
-            
-              <h3>8. Contact Us</h3>
-              <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-              <p>Email: chesswagercnb@gmail.com</p>
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="container section">
+            <div class="hero-content">
+                <h1 class="hero-heading">
+                    Innovating the Future of <span class="highlight">Digital Solutions</span>
+                </h1>
+                <p class="hero-subheading">
+                    Kingheart Royal Solutions provides comprehensive digital and technological solutions to help businesses thrive in the modern world.
+                </p>
+                <a href="#contact" class="contact-button">
+                    Get in Touch
+                </a>
             </div>
+        </section>
 
-            <div id="projects-content" class="tab-content">
-                <h2>Terms Of Service</h2>
-                  <p><strong>Effective Date:</strong> 2024/12/08</p>
-                  <p>
-                    Welcome to KINGHEART ROYAL SOLUTIONS. By creating an account, accessing, or using our services, you agree to comply with these Terms of Service. Please read them carefully. If you do not agree to these terms, you may not use our services.
-                  </p>
-                
-                  <h3>1. Introduction</h3>
-                  <p>
-                    KINGHEART ROYAL SOLUTIONS ("the Game") is an online chess application available on Android and iOS platforms. It offers offline gameplay and other features to enhance your gaming experience. These Terms of Service govern your use of the Game and any related services ("the Services").
-                  </p>
-                
-                  <h3>2. Eligibility</h3>
-                  <p>
-                    You must be at least 13 years old (or the minimum age in your jurisdiction) to use the Services. If you are under 18, you must have parental or guardian consent to use the Services.
-                  </p>
-                
-                  <h3>3. Account Registration and Security</h3>
-                  <p>
-                    To access certain features of the Services, you may be required to create an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.
-                  </p>
-                
-                  <h3>4. User Conduct</h3>
-                  <p>You agree not to:</p>
-                  <ul>
-                    <li>Use the Services for any unlawful purpose or in violation of these Terms.</li>
-                    <li>Harass, abuse, or harm another person through the Services.</li>
-                    <li>Impersonate or misrepresent your affiliation with any person or entity.</li>
-                    <li>Interfere with or disrupt the Services or servers or networks connected to the Services.</li>
-                    <li>Attempt to gain unauthorized access to any portion of the Services or any other systems or networks connected to the Services.</li>
-                  </ul>
-                
-                  <h3>5. Intellectual Property Rights</h3>
-                  <p>
-                    The Services and its original content, features, and functionality are owned by KINGHEART ROYAL SOLUTIONS and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
-                  </p>
-                
-                  <h3>6. User-Generated Content</h3>
-                  <p>
-                    You retain ownership of any content you submit, post, or display on or through the Services. By submitting, posting, or displaying content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, and display such content.
-                  </p>
-                
-                  <h3>7. Termination</h3>
-                  <p>
-                    We may terminate or suspend your account and bar access to the Services immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of the Terms.
-                  </p>
-                
-                  <h3>8. Limitation of Liability</h3>
-                  <p>
-                    In no event shall KINGHEART ROYAL SOLUTIONS, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Services.
-                  </p>
-                
-                  <h3>9. Governing Law</h3>
-                  <p>
-                    These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which KINGHEART ROYAL SOLUTIONS is headquartered, without regard to its conflict of law provisions.
-                  </p>
-                
-                  <h3>10. Changes to Terms</h3>
-                  <p>
-                    We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
-                  </p>
-                
-                  <h3>11. Contact Us</h3>
-                  <p>
-                    If you have any questions about these Terms, please contact us at:
-                  </p>
-                  <p>Email: chesswagercnb@gmail.com</p>
+        <!-- About Section -->
+        <section id="about" class="container section">
+            <h2 class="section-header">About Us</h2>
+            <div class="about-content">
+                <p>
+                    At Kingheart Royal Solutions, we believe that technology is the cornerstone of progress. Our mission is to empower businesses of all sizes with cutting-edge digital tools and strategies that drive efficiency, growth, and innovation. We specialize in custom software development, cloud computing services, data analytics, and robust cybersecurity solutions.
+                </p>
+                <p>
+                    Our team of experienced professionals is dedicated to understanding your unique challenges and delivering tailored solutions that exceed expectations. We pride ourselves on our collaborative approach, working closely with clients to ensure a seamless implementation process and a lasting partnership.
+                </p>
+                <p>
+                    From startups to large enterprises, we are committed to helping you navigate the complexities of the digital landscape and achieve your strategic goals.
+                </p>
             </div>
+        </section>
 
-            <div id="contact-content" class="tab-content">
-                <div class="account-deletion">
-                    <h2>Account Deletion</h2>
-                    <p>Deleting your account is irreversible. Please confirm your email and password to proceed.</p>
-                    <form id="deletionForm">
-                      <label for="email">Email Address</label>
-                      <input type="email" id="email" placeholder="Enter your email">
-                      
-                      <label for="password">Password</label>
-                      <input type="password" id="password" placeholder="Enter your password">
-                      
-                      <p id="errorMessage" class="error" style="display: none;">Please fill in all fields.</p>
-                      
-                      <button type="button" onclick="showPopup()">Delete My Account</button>
-                    </form>
+        <!-- News Section -->
+        <section id="news" class="container section">
+            <h2 class="section-header">Latest News</h2>
+            <div class="news-grid">
+                <!-- News Article 1 -->
+                <div class="news-card">
+                    <img src="matrix.avif" alt="" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Mobile App Development Service</h3>
+                        <p class="news-text">Our team builds feature-rich, intuitive apps for Android and iOS, offering seamless functionality and enhanced user experience...</p>
+                    </div>
+                </div>
+                <!-- News Article 2 -->
+                <div class="news-card">
+                    <img src="Ai.avif" alt="" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">AI Solutions</h3>
+                        <p class="news-text">We design intelligent AI systems that automate processes, enhance decision-making, and provide actionable insights tailored to your business needs...</p>
+                    </div>
+                </div>
+                <!-- News Article 3 -->
+                <div class="news-card">
+                    <img src="Consulting.avif" alt="" class="news-image">
+                    <div class="news-content">
+                        <h3 class="news-title">Technological Consulting</h3>
+                        <p class="news-text">We offer expert advice on adopting the latest technologies, custom strategies for digital transformation, and ongoing support to keep your tech stack optimized...</p>
+                    </div>
                 </div>
             </div>
-        </main>
+        </section>
 
-          <!-- Pop-up -->
-          <div class="popup-overlay" id="popupOverlay">
-            <div class="popup">
-              <h3 id="popupMessage"></h3>
-              <button class="confirm" onclick="deleteAccount()">Confirm</button>
-              <button class="cancel" onclick="closePopup()">Cancel</button>
+        <!-- Policy Section -->
+        <section id="policy" class="container section">
+            <h2 class="section-header">Company Policy</h2>
+            <div class="policy-content">
+                <h3>1. Information We Collect</h3>
+                <p>
+                    We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and services, when you participate in activities on the Website or otherwise when you contact us.
+                </p>
+                <h3>2. How We Use Your Information</h3>
+                <p>
+                    We use personal information collected via our Website for a variety of business purposes described below. We process your personal information for these purposes in reliance on our legitimate business interests, in order to enter into or perform a contract with you, with your consent, and/or for compliance with our legal obligations.
+                </p>
+                <h3>3. Your Rights</h3>
+                <p>
+                    You have rights under applicable data protection laws to access and control your personal information. You can request access to your data, correction of any inaccuracies, and deletion of your data where appropriate.
+                </p>
+                <h3>4. Community Guidelines</h3>
+                <p>
+                    We maintain a zero-tolerance policy for harassment, hate speech, or any form of discrimination in our communities.
+                </p>
+                <h3>5. Environmental Responsibility</h3>
+                <p>
+                    We are committed to reducing our environmental impact and support initiatives that promote sustainability in the tech industry.
+                </p>
+                <h3>6. Terms & Condition</h3>
+                <ul>
+                    <li>
+                        <p>Service Usage: Our services are provided “as is.” Clients must provide accurate and complete information. We may deny service for illegal or unethical activities.</p>
+                    </li>
+                    <li>
+                        <p>Payment Terms: Payments must be made in full before starting projects unless stated otherwise. Accepted methods include secure online gateways (e.g., Flutterwave) or direct bank transfers.</p>
+                    </li>
+                    <li>
+                        <p>Intellectual Property: Digital platforms, applications, and AI solutions we develop remain our intellectual property until full payment is received. Unauthorized duplication, distribution, or modification is prohibited.</p>
+                    </li>
+                    <li>
+                        <p>Limitation of Liability: We are not liable for losses from misuse of services, third-party integrations, or unforeseen technical issues.</p>
+                    </li>
+                    <li>
+                        <p>Termination: We may terminate services for non-compliance with these terms or failure to fulfill contractual obligations.</p>
+                    </li>
+                    <li>
+                        <p>Amendments: These terms may be updated periodically. Continued use of our services implies acceptance of changes.</p>
+                    </li>
+                </ul>
+                <h3>7. Refund Policy</h3>
+                <ul>
+                    <li>
+                        <p>Eligibility for Refunds: Refunds apply only to undelivered services. Requests must be made within 14 days of purchase.</p>
+                    </li>
+                    <li>
+                        <p>Non-Refundable Services: Delivered or partially completed services and custom development projects are non-refundable.</p>
+                    </li>
+                    <li>
+                        <p>Process for Refunds: Email greatvalleytechltd@gmail.com with proof of purchase and details.</p>
+                    </li>
+                    <li>
+                        <p>Refund Approval: Approved refunds will be processed within 7–10 business days.</p>
+                    </li>
+                </ul>
             </div>
-          </div>
-    </div>
+        </section>
 
+        <!-- Contact Section -->
+        <section id="contact" class="container section">
+            <h2 class="section-header">Contact Us</h2>
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-card">
+                    <h3 class="contact-form-heading">Get in Touch</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <div id="form-message"></div>
+                        <button type="submit" class="contact-submit-button">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="contact-info-card" style="margin-bottom: 2rem;">
+                        <h3 class="contact-form-heading">Our Office</h3>
+                        <p>Flat 6, Block 8, <br>Oyo Street, Section 1, Area 2, <br>Garki, Abuja, Nigeria</p>
+                    </div>
+                    <div class="contact-info-card" style="margin-bottom: 2rem;">
+                        <h3 class="contact-form-heading">Contact Details</h3>
+                        <p>Email: <a href="mailto:greatvalleytechltd@gmail.com">greatvalleytechltd@gmail.com</a></p>
+                        <p>Email: <a href="mailto:osemudiamenunuanejulius@gmail.com">osemudiamenunuanejulius@gmail.com</a></p>
+                        <p>Phone: <a href="tel:+2349067515176">(+234)9067515176</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Kingheart Royal Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scrolling, active link state, and mobile menu -->
     <script>
-        function showTab(tabId) 
-        {
-            // Get all tab buttons and content sections
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            // Deactivate all buttons and content
-            tabButtons.forEach(button => {
-                button.classList.remove('active');
-            });
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // Activate the clicked button and corresponding content
-            const clickedButton = document.getElementById(`${tabId}-tab`);
-            const targetContent = document.getElementById(`${tabId}-content`);
-
-            if (clickedButton && targetContent) {
-                // Apply active styling
-                clickedButton.classList.add('active');
-                targetContent.classList.add('active');
-            }
-        }
-
-        function showPopup() 
-        {
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value.trim();
-            const errorMessage = document.getElementById('errorMessage');
-
-            if (!email || !password) 
-            {
-                errorMessage.style.display = 'block';
-                return;
-            }
-            errorMessage.style.display = 'none';
-        }
-
-        function closePopup() 
-        {
-            document.getElementById('popupOverlay').style.display = 'none';
-        }
-
-        // Initialize the first tab as active on page load
         document.addEventListener('DOMContentLoaded', () => {
-            showTab('about');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            const sections = document.querySelectorAll('section[id]');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            // Handle active navigation link state
+            const handleScroll = () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', handleScroll);
+
+            // Handle form submission
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                formMessage.textContent = 'Message sent successfully! We will get back to you soon.';
+                formMessage.style.display = 'block';
+                formMessage.style.color = '#10b981';
+                contactForm.reset();
+            });
+
+            // Initial active state on load
+            handleScroll();
         });
     </script>
 </body>
