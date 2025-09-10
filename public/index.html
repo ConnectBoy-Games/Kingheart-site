@@ -11,7 +11,7 @@
         /* General Styles */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
+            background-color: #f2f7f9;
             color: #4b5563;
             margin: 0;
         }
@@ -25,12 +25,11 @@
         /* Header & Navigation */
         .header {
             position: fixed;
-            top: 0;
+            top: -15px;
             left: 0;
             right: 0;
             z-index: 50;
-            background-color: #ffffff;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            background-color: #047857;
             padding: 0.75rem 0;
         }
         .nav-container {
@@ -39,11 +38,12 @@
             align-items: center;
         }
         .logo {
-            width: 50px;
-            height: 50px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 25%;
             display: flex;
             align-items: center;
+            padding: 4%;
         }
         .logo-icon {
             width: 2rem;
@@ -54,13 +54,14 @@
         .logo-text {
             font-weight: bold;
             font-size: 1.5rem;
-            color: #111827;
+            color: #fff;
         }
         .nav-links {
             display: none;
             list-style: none;
             padding: 0;
             margin: 0;
+            color: #a7f3d0;
         }
         .nav-links li {
             margin-left: 1rem;
@@ -71,14 +72,15 @@
             font-weight: 500;
             transition: color 0.3s, background-color 0.3s;
             text-decoration: none;
-            color: #4b5563;
+            color: whitesmoke;
         }
         .nav-link:hover {
-            background-color: #f3f4f6;
+            color: slategray;
+            background-color: seashell;
         }
         .nav-link.active {
-            color: #ffffff;
-            background-color: #2563eb;
+            color: slategrey;
+            background-color: seashell;
         }
 
         .mobile-menu-button {
@@ -122,24 +124,23 @@
             padding-top: 5rem;
         }
         .section {
-            padding: 5rem 0;
+            padding: 4%;
         }
         .section-header {
             font-size: 2.25rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 2.5rem;
             color: #111827;
         }
 
         /* Home Section */
         #home {
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background-color: #f3f4f6;
+            padding: 4%;
         }
         .hero-content {
             max-width: 48rem;
@@ -149,11 +150,11 @@
             font-size: 3rem;
             line-height: 1.25;
             font-weight: 800;
-            color: #1e40af;
+            color: #047857cc;
             margin-bottom: 1rem;
         }
         .hero-heading .highlight {
-            color: #2563eb;
+            color: #047857;
         }
         .hero-subheading {
             font-size: 1.125rem;
@@ -163,7 +164,7 @@
         }
         .contact-button {
             display: inline-block;
-            background-color: #2563eb;
+            background-color: #047857;
             color: #ffffff;
             font-weight: 600;
             padding: 0.75rem 2rem;
@@ -173,7 +174,7 @@
             text-decoration: none;
         }
         .contact-button:hover {
-            background-color: #1d4ed8;
+            background-color: #047857ee;
         }
 
         /* About Section */
@@ -182,7 +183,8 @@
             margin: 0 auto;
             font-size: 1.125rem;
             color: #4b5563;
-            text-align: justify;
+            text-align: center;
+            padding: 4%;
         }
         .about-content p {
             margin-bottom: 1.5rem;
@@ -192,7 +194,8 @@
         #news {
             background-color: #f3f4f6;
             border-radius: 1rem;
-            padding: 2%;
+            padding: 4%;
+            margin-bottom: 2%;
         }
         .news-grid {
             display: grid;
@@ -234,11 +237,12 @@
 
         /* Policy Section */
         .policy-content {
-            max-width: 48rem;
-            margin: 0 auto;
+            max-width: 85%;
             font-size: 1.125rem;
             color: #4b5563;
-            text-align: justify;
+            text-align: justify-content;
+            padding: 4%;
+            margin-bottom: 2%;
         }
         .policy-content h3 {
             font-weight: 600;
@@ -251,7 +255,8 @@
         #contact {
             background-color: #f3f4f6;
             border-radius: 1rem;
-            padding: 2%;
+            padding: 4%;
+            margin-bottom: 2%;
         }
         .contact-grid {
             display: grid;
@@ -304,7 +309,7 @@
         }
         .contact-submit-button {
             width: 100%;
-            background-color: #2563eb;
+            background-color: #047857;
             color: #ffffff;
             font-weight: 600;
             padding: 0.75rem 1.5rem;
@@ -318,7 +323,7 @@
             background-color: #1d4ed8;
         }
         .contact-info-card a {
-            color: #2563eb;
+            color: #047857dd;
             text-decoration: none;
         }
         .contact-info-card a:hover {
@@ -370,7 +375,7 @@
             <div class="logo">
                 <img src="Logo.png" alt="Profile Logo" class="logo">
             </div>
-            <p class="logo-text">Kingheart Royal Solutions</p>
+            <p class="logo-text">KINGHEART ROYAL SOLUTIONS</p>
             <!-- Navigation Links -->
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -463,64 +468,142 @@
 
         <!-- Policy Section -->
         <section id="policy" class="container section">
-            <h2 class="section-header">Company Policy</h2>
+            <h2 class="section-header">Privacy Policy</h2>
             <div class="policy-content">
+                <p>
+                    KINGHEART ROYAL SOLUTIONS AND SERVICES (“we,” “our,” or “us”) values your trust and is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our applications, websites, products, and services (collectively, the “Services”).
+                    By using our Services, you agree to the terms of this Privacy Policy. If you do not agree, please discontinue use of our Services.
+                </p>
                 <h3>1. Information We Collect</h3>
-                <p>
-                    We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and services, when you participate in activities on the Website or otherwise when you contact us.
-                </p>
+                <p>We may collect the following types of information:</p>
+                <ul>
+                    <li>
+                        <p>Personal Information</p>
+                        <ul>
+                            <li><p>Name, email address, phone number, billing details, and other identifiers you provide when registering or using our Services.</p></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>Non-Personal Information</p>
+                        <ul>
+                            <li><p>Device information (model, operating system, unique device identifiers).</p></li>
+                        </ul>
+                        <ul>
+                            <li><p>Log data (IP address, browser type, pages visited, time and date of access).</p></li>
+                        </ul>
+                        <ul>
+                            <li><p>Usage data (how you interact with our apps and services).</p></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>Sensitive Permissions(If Applicable)</p>
+                        <p>Our applications may request access to:</p>
+                        <ul>
+                            <li><p>Camera & Photos: For profile pictures, in-app features, or document uploads.</p></li>
+                        </ul>
+                        <ul>
+                            <li><p>Location: To provide location-based services, if enabled.</p></li>
+                        </ul>
+                        <ul>
+                            <li><p>Contacts/Storage/Microphone: Only if necessary for core features of the application.</p></li>
+                        </ul>
+                        <p>We will always ask for your consent before accessing these features.</p>
+                    </li>
+                </ul>
                 <h3>2. How We Use Your Information</h3>
-                <p>
-                    We use personal information collected via our Website for a variety of business purposes described below. We process your personal information for these purposes in reliance on our legitimate business interests, in order to enter into or perform a contract with you, with your consent, and/or for compliance with our legal obligations.
-                </p>
-                <h3>3. Your Rights</h3>
-                <p>
-                    You have rights under applicable data protection laws to access and control your personal information. You can request access to your data, correction of any inaccuracies, and deletion of your data where appropriate.
-                </p>
-                <h3>4. Community Guidelines</h3>
-                <p>
-                    We maintain a zero-tolerance policy for harassment, hate speech, or any form of discrimination in our communities.
-                </p>
-                <h3>5. Environmental Responsibility</h3>
-                <p>
-                    We are committed to reducing our environmental impact and support initiatives that promote sustainability in the tech industry.
-                </p>
-                <h3>6. Terms & Condition</h3>
+                <p>We may use your information for purposes such as:</p>
                 <ul>
-                    <li>
-                        <p>Service Usage: Our services are provided “as is.” Clients must provide accurate and complete information. We may deny service for illegal or unethical activities.</p>
-                    </li>
-                    <li>
-                        <p>Payment Terms: Payments must be made in full before starting projects unless stated otherwise. Accepted methods include secure online gateways (e.g., Flutterwave) or direct bank transfers.</p>
-                    </li>
-                    <li>
-                        <p>Intellectual Property: Digital platforms, applications, and AI solutions we develop remain our intellectual property until full payment is received. Unauthorized duplication, distribution, or modification is prohibited.</p>
-                    </li>
-                    <li>
-                        <p>Limitation of Liability: We are not liable for losses from misuse of services, third-party integrations, or unforeseen technical issues.</p>
-                    </li>
-                    <li>
-                        <p>Termination: We may terminate services for non-compliance with these terms or failure to fulfill contractual obligations.</p>
-                    </li>
-                    <li>
-                        <p>Amendments: These terms may be updated periodically. Continued use of our services implies acceptance of changes.</p>
-                    </li>
+                    <li><p>To provide, operate, and improve our Services.</p></li>
+                    <li><p>To personalize user experience.</p></li>
+                    <li><p>To process payments and transactions.</p></li>
+                    <li><p>To send important updates, notifications, or promotional communications.</p></li>
+                    <li><p>To monitor and analyze usage trends to enhance performance.</p></li>
+                    <li><p>To comply with legal obligations and prevent fraud or misuse.</p></li>
                 </ul>
-                <h3>7. Refund Policy</h3>
+                <h3>3. How We Share Your Information</h3>
+                <p>We do not sell your personal data. However, we may share information in the following circumstances:</p>
                 <ul>
-                    <li>
-                        <p>Eligibility for Refunds: Refunds apply only to undelivered services. Requests must be made within 14 days of purchase.</p>
-                    </li>
-                    <li>
-                        <p>Non-Refundable Services: Delivered or partially completed services and custom development projects are non-refundable.</p>
-                    </li>
-                    <li>
-                        <p>Process for Refunds: Email greatvalleytechltd@gmail.com with proof of purchase and details.</p>
-                    </li>
-                    <li>
-                        <p>Refund Approval: Approved refunds will be processed within 7–10 business days.</p>
-                    </li>
+                    <li><p>With Service Providers: Third parties who help us with hosting, analytics, payment processing, or customer support.</p></li>
+                    <li><p>For Legal Reasons: When required by law, regulation, or government request.</p></li>
+                    <li><p>Business Transfers: If we merge, acquire, or sell assets, your information may be part of the transferred assets.</p></li>
                 </ul>
+                <h3>4. Data Security</h3>
+                <p>
+                    We implement appropriate technical and organizational measures to protect your data from unauthorized access, loss, misuse, or disclosure. 
+                    However, no system is 100% secure, and we cannot guarantee absolute security.
+                </p>
+                <h3>5. Data Retention</h3>
+                <p>
+                    We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required by law.
+                </p>
+                <h3>6. Your Privacy Rights</h3>
+                <p>Depending on your jurisdiction, you may have rights to:</p>
+                <ul>
+                    <li><p>Access, update, or delete your personal information.</p></li>
+                    <li><p>Opt out of receiving marketing communications.</p></li>
+                    <li><p>Withdraw consent to data processing (where applicable).</p></li>
+                    <li><p>File a complaint with a data protection authority.</p></li>
+                </ul>
+                <p>To exercise these rights, contact us at kingheartroyalsolutions@swiftpaymfb.com</p>
+                <h3>7. Children’s Privacy</h3>
+                <p>Our Services are not directed to children under 13 (or under 16 in the EU/EEA). We do not knowingly collect personal data from children. 
+                    If you believe we have collected data from a child, please contact us immediately to remove it.
+                </p>
+                <h3>8. Third-Party Services and Links</h3>
+                <p>Our Services may contain links to third-party websites, applications, or services. We are not responsible for their privacy practices. 
+                    We encourage you to review the privacy policies of those third parties.
+                </p>
+                <h3>9. International Data Transfers</h3>
+                <p>If you access our Services from outside Nigeria, your information may be transferred and processed in a country different from your residence. 
+                    We ensure that such transfers comply with applicable data protection laws.
+                </p>
+                <h3>10. Changes to This Privacy Policy</h3>
+                <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the updated version with a new “Last Updated” date. 
+                    Continued use of our Services constitutes acceptance of the updated Privacy Policy.
+                </p>
+            </div>
+            <h2 class="section-header">Refund Policy</h2>
+            <div class="policy-content">
+                <p>
+                    At KINGHEART ROYAL SOLUTIONS AND SERVICES (“we,” “our,” or “us”), we strive to provide high-quality digital products, software solutions, and services. 
+                    Your satisfaction is important to us. This Refund Policy explains the conditions under which refunds may be issued.
+                </p>
+                <h3>1. General Policy</h3>
+                <ul>
+                    <li><p>Due to the nature of digital products and services, all sales are considered final once delivered, except as otherwise stated in this policy.</p></li>
+                    <li><p>Refunds will only be provided in cases where the product or service is defective, not delivered, or materially different from what was advertised.</p></li>
+                </ul>
+                <h3>2. Eligibility for Refunds</h3>
+                <p>You may request a refund if:</p>
+                <ul>
+                    <li><p>Technical Issues: The purchased application, software, or service does not function as intended, and our support team is unable to resolve the issue.</p></li>
+                    <li><p>Non-Delivery: You did not receive access to the purchased digital product or service.</p></li>
+                    <li><p>Misrepresentation: The product or service delivered is substantially different from its description.</p></li>
+                </ul>
+                <p>Refunds will not be issued in cases such as:</p>
+                <ul>
+                    <li><p>Change of mind after purchase.</p></li>
+                    <li><p>Incompatibility with your device (unless clearly misrepresented in the product description).</p></li>
+                    <li><p>Failure to follow instructions or misuse of the product.</p></li>
+                </ul>
+                <h3>3. Refund Request Process</h3>
+                <p>To request a refund, you must:</p>
+                <ul>
+                    <li><p>Contact us at [Insert Support Email] within 7 days of your purchase.</p></li>
+                    <li><p>Provide proof of purchase (receipt, order number, or transaction details).</p></li>
+                    <li><p>Describe the issue clearly, along with any supporting evidence (e.g., screenshots or error messages).</p></li>
+                </ul>
+                <p>Our support team will review your request and respond within 5–7 business days.</p>
+                <h3>4. Method of Refund</h3>
+                <ul>
+                    <li><p>Approved refunds will be processed using the original payment method used at the time of purchase.</p></li>
+                    <li><p>Depending on your payment provider, it may take 5–10 business days for the refund to reflect in your account.</p></li>
+                </ul>
+                <h3>5. Third-Party Purchases (Google Play Store, App Store, etc.)</h3>
+                <p>
+                    If you purchased our app or service through a third-party platform (e.g., Google Play Store, Apple App Store, or another marketplace), 
+                    refund requests must be submitted directly through that platform in accordance with their policies.
+                </p>
             </div>
         </section>
 
@@ -554,13 +637,12 @@
                 <div class="contact-info">
                     <div class="contact-info-card" style="margin-bottom: 2rem;">
                         <h3 class="contact-form-heading">Our Office</h3>
-                        <p>Flat 6, Block 8, <br>Oyo Street, Section 1, Area 2, <br>Garki, Abuja, Nigeria</p>
+                        <p>Shop No. 2053,<br>Abagana Lane, Area 1 Shopping Plaza,<br>Garki, Abuja, Nigeria</p>
                     </div>
                     <div class="contact-info-card" style="margin-bottom: 2rem;">
                         <h3 class="contact-form-heading">Contact Details</h3>
-                        <p>Email: <a href="mailto:greatvalleytechltd@gmail.com">greatvalleytechltd@gmail.com</a></p>
-                        <p>Email: <a href="mailto:osemudiamenunuanejulius@gmail.com">osemudiamenunuanejulius@gmail.com</a></p>
-                        <p>Phone: <a href="tel:+2349067515176">(+234)9067515176</a></p>
+                        <p>Email: <a href="mailto:kingheartroyalsolutions@swiftpaymfb.com">kingheartroyalsolutions@swiftpaymfb.com</a></p>
+                        <p>Phone: <a href="tel:+2347017340933">(+234)7017340933</a></p>
                     </div>
                 </div>
             </div>
